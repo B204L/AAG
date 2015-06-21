@@ -11,21 +11,22 @@ int consoleCode = 9600;
 int toolCode = 38400;
 
 void setup() {  //setup hardware
-                // put your setup code here, to run once:
   
   // console
-
-  Serial.begin(consoleCode);    //usb serial communication
+  //usb serial communication
+  Serial.begin(consoleCode);
   
   // ph
   // rx/tx pins 0 1
   Serial1.begin(toolCode);
   
   // 0xygen
-  Serial2.begin(toolCode);    // rx/tx pins 9 10
+  // rx/tx pins 9 10
+  Serial2.begin(toolCode);
   
   // ppm
-  Serial3.begin(toolCode);    // rx/tx pins 7 8
+  // rx/tx pins 7 8
+  Serial3.begin(toolCode);
   
   inputstring.reserve(5);
   sensorstring.reserve(30);
@@ -39,6 +40,7 @@ void setup() {  //setup hardware
   sCmd.addCommand("ppm off", ppm_off);  //  turns ppm meter off
   sCmd.setDefaultHandler(unrecognized); //  handles commands that aren't matched (replies "wut")
   Serial.println("Ready");
+
 }
 
 void serialEvent() {                                                            //if the hardware serial port_0 receives a char              
