@@ -6,13 +6,27 @@ String sensorstring = "";  //a string to hold the data from the probe
 boolean input_stringcomplete = false;
 boolean sensor_stringcomplete = false;  //have we received all the data from the probe
 
+// serial codes??
+int consoleCode = 9600; 
+int toolCode = 38400;
+
 void setup() {  //setup hardware
                 // put your setup code here, to run once:
   
-  Serial.begin(9600);    //usb serial communication
-  Serial1.begin(38400);    // rx/tx pins 0 1
-  Serial2.begin(38400);    // rx/tx pins 9 10
-  Serial3.begin(38400);    // rx/tx pins 7 8
+  // console
+
+  Serial.begin(consoleCode);    //usb serial communication
+  
+  // ph
+  // rx/tx pins 0 1
+  Serial1.begin(toolCode);
+  
+  // 0xygen
+  Serial2.begin(toolCode);    // rx/tx pins 9 10
+  
+  // ppm
+  Serial3.begin(toolCode);    // rx/tx pins 7 8
+  
   inputstring.reserve(5);
   sensorstring.reserve(30);
   
