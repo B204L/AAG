@@ -1,0 +1,14 @@
+{
+	"name": "growsense",
+	"version": "1.0.0",
+	"description": "A nodejs service that uploads incoming serial data to thingspeak",
+	"main": "index.js",
+	"dependencies": {
+		"johnny-five":"*",
+		"express":"*",
+		"serialport":"*",
+		"thingspeakclient":"*"
+	},
+	"author": "Justin Vorel",
+	"license": "GNU"
+}
