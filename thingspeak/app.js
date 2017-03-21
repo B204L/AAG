@@ -5,36 +5,44 @@ var ThingSpeakClient = require('thingspeakclient'),
 		baudRate: 9600,
 		parser:SerialPort.parsers.readline("\r\n")
 	}),
-	array = "",
-	orp = "",
-	ph = "",
-	ec = "";
+	ORP = "",
+	PH = "",
+	EC = "";
 
 port.on('data', onData);
 port.on('open', onPortOpen);
 port.on('close', onClose);
 
-function onClose(){
+client.attachChannel(241532, { writeKey:'9YDKF4SZJKM60JDW', readKey:'4YJMH1Y46NXRWQQ9'});	//thingspeak client connect API keys
+
+function onClose(){	//lets you know the port is closed
 	console.log("Closing then opening");
 }
 
-function onPortOpen(){
+function onPortOpen(){	//lets you know the port is open
 	console.log("Opened port.");
 }
 
-function onData(d)
+function onData(d)	//loop reads sensor string from /dev/ttyACM0 and parses it for each reading, then updates thingspeak channel
 {
-	array = d.split('/r');
-	orp = array[1];
-	ph = array;
-	ec = array[3];
+	if (d.substr(0,3) == "ORP"){
+		ORP = d.substr(4,9);
+		//console.log(ORP);	//for debugging
+	}
 
+	if (d.substr(0,2) == "EC"){
+		EC = d.substr(3,6);
+		//console.log(EC);
+	}
 
+	if (d.substr(0,2) == "PH"){
+		PH = d.substr(3,6);
+		//console.log(PH);
+	}
 
-	console.log(ph)
+	client.updateChannel(241532, {field1: PH, field2: ORP, field3: EC}, function(err, resp){
+		if (!err && resp > 0) {
+			console.log('Update succesfull. Entry number was: ' + resp);
+		}
+	});
 }
-
-//to do
-//somehow extract each line from onData(d)
-//assign each line to its own variable
-//possibly convert from string to int

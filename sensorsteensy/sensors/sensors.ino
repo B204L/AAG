@@ -68,10 +68,10 @@ void serialEvent3(){
 }
 
 void loop() {
-delay(1000);
 orp();
 delay(1000);
 ph();
 delay(1000);
 ec();
+delay(1000);
 } //end loop

@@ -45,7 +45,7 @@ void print_EC_data(void) {                            //this function will pars 
   SAL = strtok(NULL, ",");                            //let's pars the array at each comma
   GRAV = strtok(NULL, ",");                           //let's pars the array at each comma
 
-  //Serial.print("EC ");                                //we now print each value we parsed separately
+  Serial.print("EC ");                                //we now print each value we parsed separately
   Serial.println(EC);                                 //this is the EC value
 
   //Serial.print("TDS:");                               //we now print each value we parsed separately

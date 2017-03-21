@@ -18,7 +18,7 @@ void orp() {
   }
 
   if (orp_string_complete == true) {
-    Serial.println(orpString);
+    Serial.println("ORP " + orpString);
     /*if (isdigit(orpString[0])) {
       ORP = orpString.toFloat();
       if (ORP >= 500.0) {

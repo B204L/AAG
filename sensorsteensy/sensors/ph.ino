@@ -18,7 +18,7 @@ void ph() {
   }
 
   if (ph_string_complete == true) {
-    Serial.println(phString);
+    Serial.println("PH " + phString);
    /* if (isdigit(phString[0])) {               //if the first character in the string is a digit
           pH = phString.toFloat();                    //convert the string to a floating point number so it can be evaluated by the Arduino
           if (pH >= 7.0) {                                //if the pH is greater than or equal to 7.0
