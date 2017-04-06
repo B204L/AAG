@@ -2,12 +2,12 @@
 
 void orp() {
 
-  if (input_string_complete == true && orpInput == true) {  //if a string has been received and orp was selected send to sensor
+  /*if (input_string_complete == true && orpInput == true) {  //if a string has been received and orp was selected send to sensor
     Serial2.print(inputstring);
     Serial2.print('\r');
     inputstring = "";
     input_string_complete = false;
-    }
+    }*/
 
     if (Serial2.available() > 0) {
     char inchar = (char)Serial2.read();

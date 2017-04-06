@@ -2,12 +2,12 @@
 
 void ph() {
 
-  if (input_string_complete == true && phInput == true) { //if a string has been received and ph was selected send to sensor
+  /*if (input_string_complete == true && phInput == true) { //if a string has been received and ph was selected send to sensor
     Serial1.print(inputstring);
     Serial1.print('\r');
     inputstring = "";
     input_string_complete = false;
-    }
+    }*/
   
   if (Serial1.available() > 0) {
     char inchar = (char)Serial1.read();

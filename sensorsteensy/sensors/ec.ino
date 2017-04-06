@@ -2,12 +2,12 @@
 
 void ec(){
 
-    if (input_string_complete == true && ecInput == true) { //if a string has been received and orp was selected send to sensor
+    /*if (input_string_complete == true && ecInput == true) { //if a string has been received and orp was selected send to sensor
     Serial3.print(inputstring);
     Serial3.print('\r');
     inputstring="";
     input_string_complete = false;
-    }
+    }*/
   
     if (Serial3.available() > 0) {
     char inchar = (char)Serial3.read();

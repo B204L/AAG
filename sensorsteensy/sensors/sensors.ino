@@ -29,24 +29,25 @@ void serialEvent() {
   inputstring = Serial.readStringUntil(13);
   input_string_complete = true;
 
-    if (inputstring == "ec" && input_string_complete == true){  //switch inputstring to ec
-    phInput == false && ecInput == true && orpInput == false;
+    if (inputstring.substring(0,2) == "ec" && input_string_complete == true){  //switch inputstring to ec
     Serial.println("EC Probe Selected for Input");
+    Serial3.println(inputstring.substring(2,13));
     inputstring = "";
     input_string_complete = false;
   }
 
   
-    if (inputstring == "orp" && input_string_complete == true){ //switch inputstring to orp
-    phInput == false && ecInput == false && orpInput == true;
+    if (inputstring.substring(0,3) == "orp" && input_string_complete == true){ //switch inputstring to orp
     Serial.println("ORP Probe Selected for Input");
+    Serial2.println(inputstring.substring(3,13));
     inputstring = "";
     input_string_complete = false;
   }
 
-    if (inputstring == "ph" && input_string_complete == true){  //switch inputstring to PH
-    phInput == true && ecInput == false && orpInput == false;
+    if (inputstring.substring(0,2) == "ph" && input_string_complete == true){  //switch inputstring to PH
     Serial.println("pH Probe Selected For Input");
+    Serial1.println(inputstring.substring(2,13));
+    //Serial.println(inputstring.substring(2,13));
     inputstring = "";
     input_string_complete = false;
   }
