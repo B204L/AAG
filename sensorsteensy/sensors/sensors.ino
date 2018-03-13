@@ -1,3 +1,21 @@
+
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define OLED_RESET 4
+Adafruit_SSD1306 display(OLED_RESET);
+
+#define NUMFLAKES 10
+#define XPOS 0
+#define YPOS 1
+#define DELTAY 2
+#define SSD1306_LCDHEIGHT 64
+#if (SSD1306_LCDHEIGHT != 64)
+#error("Height incorrect, please fix Adafruit_SSD1306.h!");
+#endif
+
 String inputstring = "";
 String phString = "";
 String orpString = "";
@@ -23,6 +41,15 @@ void setup() {
   phString.reserve(30);
   ecString.reserve(30);
   orpString.reserve(30);
+
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  // initialize with the I2C addr 0x3D (for the 128x64)
+  display.display();
+  delay(2000);
+  display.clearDisplay();
+
+  oledPh();
+  delay(1000);
+  display.clearDisplay();
 }
 
 void serialEvent1(){
@@ -44,10 +71,14 @@ void loop() {
 recvWithStartEndMarkers();                //Loop overview:
 toggleSwitch();                           //recvWithStartEndMarkers() Checks to see if anything was sent over serial between <> characters
 inputCommand();                           //toggleSwitch() checks if a <ph>, <orp>, or <ec> was sent thru the serial monitor, change
+oledPh();
 orp();                                    //boolean flags to appropriate sensor so that our input goes to the correct device.
-delay(1000);                              //inputCommand() will then take any characters sent through serial monitor placed between <> markers,
+delay(2000);                              //inputCommand() will then take any characters sent through serial monitor placed between <> markers,
+oledORP();
 ph();                                     //convert them to strings, then send them to Serial1, Serial2, or Serial3 depending on the sensor chosen in the
-delay(1000);                              //toggleSwitch() function. These three functions are located in the 'input' file.
+delay(2000);                              //toggleSwitch() function. These three functions are located in the 'input' file.
+oledEC();
 ec();                                     //Finally, loop through the orp(), ph(), and ec() functions that constantly read from Serial1, Serial2, and Serial3
-delay(1000);                              //and print the results to Serial. Each of these functions are located in their respectively named file.
+delay(2000);                              //and print the results to Serial. Each of these functions are located in their respectively named file.
+
 } //end loop
