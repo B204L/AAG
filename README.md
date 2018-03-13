@@ -13,7 +13,7 @@ There's also a simple debug mode that will halt all sensor readings to the outpu
 
 # Node JS
 
-A simple Node JS app using the Johnny-Five library receives the data from the sensors over the /dev/ttyACM0 port and uploads them to a ThingSpeak account. The method for this not only uses strings but calls on the substr method to parse through the incoming string and assigns only the number portion to a variable (which is then uploaded to ThingSpeak). This is handy for documentation and observation of your water's status over the internet.
+A simple Node JS app using serialport receives the data from the sensors over the /dev/ttyACM0 port and uploads them to a ThingSpeak account. The method for this not only uses strings but calls on the substr method to parse through the incoming string and assigns only the number portion to a variable (which is then uploaded to ThingSpeak). This is handy for documentation and observation of your water's status over the internet.
 
 # To Do
 
