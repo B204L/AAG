@@ -7,7 +7,7 @@ Sensor stamps are connected over UART to a microcontroller of your choice (Teens
 
 Strings can be received from the serial monitor, received strings will need to be between start and end markers like so: <STRING>
 
-To send a command to an individual sensor it will first need to be selected by sending '<PH>' '<EC>' or '<ORP>' through the serial monitor. Once selected it can receive UART commands, see Atlas-Scientific documentation for specific commands in regards to each particular stamp.
+To send a command to an individual sensor it will first need to be selected by sending <PH> <EC> or <ORP> through the serial monitor. Once selected it can receive UART commands, see Atlas-Scientific documentation for specific commands in regards to each particular stamp.
 
 There's also a simple debug mode that will halt all sensor readings to the output to make it easier to read, use <debug> to enter this mode and twice to exit it and resume output.
 
