@@ -1,19 +1,21 @@
 var ThingSpeakClient = require('thingspeakclient'),
 	client = new ThingSpeakClient(),
 	SerialPort = require('serialport'),
+	ReadLine = require('@serialport/parser-readline'),
 	port = new SerialPort('/dev/ttyACM0', {
-		baudRate: 9600,
-		parser:SerialPort.parsers.readline("\r\n")
+		baudRate: 9600
 	}),
 	ORP = "",
 	PH = "",
 	EC = "";
-
-port.on('data', onData);
-port.on('open', onPortOpen);
-port.on('close', onClose);
-
-client.attachChannel(241532, { writeKey:'', readKey:''});	//thingspeak client connect API keys
+	parser = port.pipe(new ReadLine({ delimiter: '\r\n' }))
+//port.on('data', onData);
+//port.on('open', onPortOpen);
+//port.on('close', onClose);
+parser.on('data', onData);
+parser.on('data', onPortOpen);
+parser.on('close', onClose);
+client.attachChannel(241532, { writeKey:'9YDKF4SZJKM60JDW', readKey:'4YJMH1Y46NXRWQQ9'});	//thingspeak client connect API keys
 
 function onClose(){	//lets you know the port is closed
 	console.log("Closing then opening");

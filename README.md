@@ -1,7 +1,7 @@
 # AAG
 Control program using Atlas-Scientific sensors for monitoring water quality
 
-# C# / Low Level side
+# C / Low Level side
 
 Sensor stamps are connected over UART to a microcontroller of your choice (Teensy LC in my case) where incoming data is sent as a string and assigned to variables, then output through the serial monitor and attached oled display. Not an elegant solution but it hasn't crashed from heap fragmentation so far.
 

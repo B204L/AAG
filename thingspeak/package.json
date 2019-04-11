@@ -4,12 +4,9 @@
 	"description": "A nodejs service that uploads incoming serial data to thingspeak",
 	"main": "index.js",
 	"dependencies": {
-		"bindings": "^1.5.0",
-		"blessed": "^0.1.81",
-		"blessed-contrib": "^4.8.5",
-		"express": "*",
+		"bindings": "*",
 		"johnny-five": "*",
-		"serialport": "4.0.7",
+		"serialport": "*",
 		"thingspeakclient": "*"
 	},
 	"author": "Justin Vorel",
