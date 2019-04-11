@@ -13,7 +13,7 @@ var ThingSpeakClient = require('thingspeakclient'),
 parser.on('data', onData);
 parser.on('data', onPortOpen);
 parser.on('close', onClose);
-client.attachChannel(241532, { writeKey:'9YDKF4SZJKM60JDW', readKey:'4YJMH1Y46NXRWQQ9'});	//thingspeak client connect API keys
+client.attachChannel(241532, { writeKey:'', readKey:''});	//thingspeak client connect API keys
 
 function onClose(){	//lets you know the port is closed
 	console.log("Closing then opening");
