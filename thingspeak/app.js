@@ -9,9 +9,7 @@ var ThingSpeakClient = require('thingspeakclient'),
 	PH = "",
 	EC = "";
 	parser = port.pipe(new ReadLine({ delimiter: '\r\n' }))
-//port.on('data', onData);
-//port.on('open', onPortOpen);
-//port.on('close', onClose);
+
 parser.on('data', onData);
 parser.on('data', onPortOpen);
 parser.on('close', onClose);
