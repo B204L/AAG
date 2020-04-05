@@ -15,7 +15,7 @@ There's also a simple debug mode that will halt all sensor readings to the outpu
 
 A simple Node JS app using serialport receives the data from the sensors over the /dev/ttyACM0 port and uploads them to a ThingSpeak account. The method for this not only uses strings but calls on the substr method to parse through the incoming string and assigns only the number portion to a variable (which is then uploaded to ThingSpeak). This is handy for documentation and observation of your water's status over the internet.
 
-# Breadboard
+# Breakout board
 
 A little board to put the stamps & teensy on, quite a bit cleaner than a breadboard! https://oshpark.com/profiles/B204L and a pic of it in action: https://i.imgur.com/ARbKEY7.jpg
 
